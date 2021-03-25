@@ -90,10 +90,10 @@ public class PlayerBehavior : MonoBehaviour
     {
         UnityEngine.Debug.Log("STARTING the recording mode...");
         
-        // record the character movements until the time travel button is pressed again
+        // Record the character movements until the time travel button is pressed again
         while (recordingMovements)
         {
-            //if (this frame's) current position is a new position (!= to the most recent position), save that position to the movements List
+            // If (this frame's) current position is a new position (!= to the most recent position), save that position to the movements List
             if (transform.position != movements[movements.Count - 1])
             {
                 movements.Add(transform.position);
@@ -109,23 +109,23 @@ public class PlayerBehavior : MonoBehaviour
     IEnumerator ReplayMovements()
     {
         int index = 0;
+        GameObject replayChar = Instantiate(pastCharacter, movements[0], Quaternion.identity);
 
-        //foreach (Vector3 pos in movements)
-        //{
-        //    UnityEngine.Debug.Log("Event: " + pos + " at " + movement_times[index]);
-        //    index += 1;
-        //}
-
-        transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        
+        //transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        
+        // Put the player back at the beginning of the time travel spot
+        transform.position = movements[0];
         
         while (!recordingMovements && itemsInList)
         {
             
-            UnityEngine.Debug.Log("Event: " + movements[index] + " at " + movement_times[index]);
+            //UnityEngine.Debug.Log("Event: " + movements[index] + " at " + movement_times[index]);
 
             if (movements.Count > index + 1)
             {
-                transform.position = movements[index];
+                //transform.position = movements[index];
+                replayChar.transform.position = movements[index];
                 yield return new WaitForSeconds(0); //(float)movement_times[index]
                 index += 1;
                 
@@ -135,7 +135,8 @@ public class PlayerBehavior : MonoBehaviour
         }
         itemsInList = true;
 
-        //reset all the stuff
+        // Reset all the stuff
+        Destroy(replayChar);
         transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         movements.Clear();
         movement_times.Clear();
