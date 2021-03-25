@@ -1633,6 +1633,7 @@ MonoBehaviour:
   jumpIntensity: 6
   isGrounded: 0
   pastCharacter: {fileID: 1276267618}
+  timeSpeed: 20
 --- !u!212 &2106066439
 SpriteRenderer:
   m_ObjectHideFlags: 0
