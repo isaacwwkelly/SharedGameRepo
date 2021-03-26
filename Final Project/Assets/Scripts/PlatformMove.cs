@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class PlatformMove : MonoBehaviour
 {
-    float dirX, moveSpeed = .5f;
+    [SerializeField] private float leftBound;
+    [SerializeField] private float rightBound;
+    float moveSpeed = .5f;
     bool moveRight = true;
 
     private void Update()
     {
-        if(transform.position.x > 1f)
+        if(transform.position.x > leftBound)
         {
             moveRight = false;
         }
-        if (transform.position.x < -1.315f)
+        if (transform.position.x < rightBound)
         {
             moveRight = true;
         }
