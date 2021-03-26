@@ -18,21 +18,27 @@ public class PlayerBehavior : MonoBehaviour
     private List<Vector3> movements = new List<Vector3>();
     private List<double> movement_times = new List<double>();
 
+    // for player movement
+    private Rigidbody2D rb2D;
+    private Vector2 movement = Vector3.zero;
+    //[SerializeField] private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Left and right control on player
-        transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, 1) * speed * Time.deltaTime;
+        // Player movement
+        Move();
+        Jump();
 
-        // Allow player to jump, only if the player is grounded on a platform
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpIntensity, ForceMode2D.Impulse);
+        //animator.SetFloat("Horizontal", movement.x);
+        //animator.SetFloat("Vertical", movement.y);
+        //animator.SetFloat("Magnitude", movement.magnitude);
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -49,11 +55,30 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    private void Move()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        float moveBy = x * speed;
+        rb2D.velocity = new Vector2(moveBy, rb2D.velocity.y);
+    }
+
+    private void Jump()
+    {
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
+        {
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpIntensity);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "platform")
         {
             isGrounded = true;
+        }
+        else if (collision.gameObject.tag == "climbable")
+        {
+            Physics2D.gravity = new Vector3(0, -2, 0);
         }
     }
 
@@ -62,6 +87,10 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.gameObject.tag == "platform")
         {
             isGrounded = false;
+        }
+        else if (collision.gameObject.tag == "climbable")
+        {
+            Physics2D.gravity = new Vector3(0, -9.8f, 0);
         }
     }
 
@@ -90,7 +119,7 @@ public class PlayerBehavior : MonoBehaviour
     IEnumerator RecordMovements(Stopwatch sw)
     {
         UnityEngine.Debug.Log("STARTING the recording mode...");
-        
+
         // Record the character movements until the time travel button is pressed again
         while (recordingMovements)
         {
@@ -103,7 +132,7 @@ public class PlayerBehavior : MonoBehaviour
             yield return new WaitForSeconds(0);
         }
 
-        sw.Reset();        
+        sw.Reset();
         UnityEngine.Debug.Log("ENDING the recording mode... movements[] size = " + movements.Count);
     }
 
@@ -112,24 +141,24 @@ public class PlayerBehavior : MonoBehaviour
         int index = 0;
         GameObject replayChar = Instantiate(pastCharacter, movements[0], Quaternion.identity);
 
-        
+
         //transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        
+
         // Put the player back at the beginning of the time travel spot
         transform.position = movements[0];
-        
+
         while (!recordingMovements && itemsInList)
         {
-            
+
             //UnityEngine.Debug.Log("Event: " + movements[index] + " at " + movement_times[index]);
 
             if (movements.Count > index + 1)
             {
                 //transform.position = movements[index];
                 replayChar.transform.position = movements[index];
-                yield return new WaitForSeconds(0); //(float)movement_times[index]
+                yield return new WaitForSeconds((float)movement_times[index]/30); //(float)movement_times[index]  //CURRENT ISSUE HERE
                 index += 1;
-                
+
             }
             else
                 itemsInList = false;
