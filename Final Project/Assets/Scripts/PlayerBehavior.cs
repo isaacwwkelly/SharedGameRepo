@@ -6,6 +6,7 @@ using System.Diagnostics;
 
 public class PlayerBehavior : MonoBehaviour
 {
+    
     [SerializeField] private int speed;
     [SerializeField] private float jumpIntensity;
     [SerializeField] private bool isGrounded;
