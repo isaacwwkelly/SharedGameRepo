@@ -2,74 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehavior : MonoBehaviour
+public class GameController : MonoBehaviour
 {
-    // Game Objects
-    [SerializeField] private GameController gameController;
-    [SerializeField] private ShadowPlayerController shadowPlayerController;
+    // Player Stats
+    [SerializeField] public int playerSpeed = 2;
+    [SerializeField] public float jumpIntensity = 3;
 
-    // for player movement
-    public Rigidbody2D rb2D;
-    public Transform rb2DT;
-    [SerializeField] public bool isGrounded;
+    // Controller Aspects
+    [SerializeField] private PlayerBehavior playerBehavior;
+    [SerializeField] private ShadowPlayerController shadowPlayerController;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
-        rb2DT = GetComponent<Transform>();
-
-        // Double check if the GameController.cs is not attached to the player in Unity
-        if (!gameController)
-            gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        if (!playerBehavior)
+            playerBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>();
         if (!shadowPlayerController)
             shadowPlayerController = GameObject.FindGameObjectWithTag("shadowPlayer").GetComponent<ShadowPlayerController>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Player movement
-        Move();
-        Jump();
-    }
-
-    private void FixedUpdate()
-    {
-
-    }
-
-    private void Move()
-    {
-        float x = Input.GetAxisRaw("Horizontal");
-        float moveBy = x * gameController.playerSpeed;
-        rb2D.velocity = new Vector2(moveBy, rb2D.velocity.y);
-    }
-
-    private void Jump()
-    {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
-        {
-            rb2D.velocity = new Vector2(rb2D.velocity.x, gameController.jumpIntensity);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "platform")
-            isGrounded = true;
-        else if (collision.gameObject.tag == "climbable")
-            Physics2D.gravity = new Vector3(0, -2, 0);
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "platform")
-            isGrounded = false;
-        else if (collision.gameObject.tag == "climbable")
-            Physics2D.gravity = new Vector3(0, -9.8f, 0);
     }
 
     //public void BeginTimeTravel()
@@ -88,7 +43,7 @@ public class PlayerBehavior : MonoBehaviour
     //    // Option 1
     //    //StartCoroutine(RecordMovements(stopWatch));
 
-        
+
     //}
 
     //public void StaticRecordMovements()
@@ -109,7 +64,7 @@ public class PlayerBehavior : MonoBehaviour
     //    //StartCoroutine(ReplayMovements());
 
     //    // Option 2
-    //    //StaticReplayMovements();
+    //    StaticReplayMovements();
 
     //}
 
@@ -150,10 +105,10 @@ public class PlayerBehavior : MonoBehaviour
 
     //}
 
-    private void MoveBack()
-    {
-        //shadowRb2DT.position = new Vector2(-3, 1);
-    }
+    //private void MoveBack()
+    //{
+    //    shadowRb2DT.position = new Vector2(-3, 1);
+    //}
 
     //IEnumerator RecordMovements(Stopwatch sw)
     //{
@@ -178,7 +133,7 @@ public class PlayerBehavior : MonoBehaviour
     //IEnumerator ReplayMovements()
     //{
     //    int index = 0;
-    //    //GameObject replayChar = Instantiate(ShadowPlayer, movements[0], Quaternion.identity);
+    //    GameObject replayChar = Instantiate(ShadowPlayer, movements[0], Quaternion.identity);
 
 
     //    //transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -194,7 +149,7 @@ public class PlayerBehavior : MonoBehaviour
     //        if (movements.Count > index + 1)
     //        {
     //            //transform.position = movements[index];
-    //            //replayChar.transform.position = movements[index];
+    //            replayChar.transform.position = movements[index];
     //            yield return new WaitForSeconds((float)movement_times[index]); //(float)movement_times[index]  //CURRENT ISSUE HERE
     //            index += 1;
 
@@ -205,7 +160,7 @@ public class PlayerBehavior : MonoBehaviour
     //    itemsInList = true;
 
     //    // Reset all the stuff
-    //    //Destroy(replayChar);
+    //    Destroy(replayChar);
     //    transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     //    movements.Clear();
     //    movement_times.Clear();
