@@ -10,12 +10,15 @@ public class ShadowPlayerController : MonoBehaviour
     private Rigidbody2D shadowRb2D;
     private Transform shadowRb2DT;
 
+    // Shadow Player Movement
+    [SerializeField] private bool isClimbing = false;
+    [SerializeField] private bool isGrounded = false;
+
+
     // Time travel stuff
     [SerializeField] public bool recordingMovements = false;
     [SerializeField] public bool replayingMovements = false;
     private bool startOrStopTimeTravel = true;
-    private bool itemsInList = true;
-    private bool isGrounded = false;
     private List<Vector2> movements = new List<Vector2>();
     private List<double> movement_times = new List<double>();
     private int index_mvmnt = 1;
@@ -56,19 +59,17 @@ public class ShadowPlayerController : MonoBehaviour
 
             else // If it's the second time hitting the time travel button, which will trigger the replay OF the shadow
             {
-                //Debug.Log("EVENT HIST SIZE: " + movements.Count);
+                // Stop recording
+                recordingMovements = false;
+
 
                 // Move the shadow to the initial position
                 transform.position = movements[0];
 
-                recordingMovements = false;
+                // Start the replay
+                // DO
+
                 replayingMovements = true;
-
-                // Option 1
-                //StartCoroutine(ReplayMovements());
-
-                // Option 2
-                //StaticReplayMovements();
 
                 startOrStopTimeTravel = !startOrStopTimeTravel;
             }
@@ -90,7 +91,10 @@ public class ShadowPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "platform")
             isGrounded = true;
         else if (collision.gameObject.tag == "climbable")
+        {
             Physics2D.gravity = new Vector3(0, -2, 0);
+            isClimbing = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -98,7 +102,10 @@ public class ShadowPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "platform")
             isGrounded = false;
         else if (collision.gameObject.tag == "climbable")
+        {
             Physics2D.gravity = new Vector3(0, -9.8f, 0);
+            isClimbing = false;
+        }
     }
 
     // This is the first function called when the time travel RECORDING phase is initiated
@@ -125,7 +132,6 @@ public class ShadowPlayerController : MonoBehaviour
     {
         if (movements.Count > index_mvmnt + 1)
         {
-            itemsInList = true;
 
             // Simulate PlayerBehavior.Move() with a quick calculation
             float x = movements[index_mvmnt].x - movements[index_mvmnt - 1].x;
@@ -135,9 +141,10 @@ public class ShadowPlayerController : MonoBehaviour
                 x = 1;
 
             float y = movements[index_mvmnt].y - movements[index_mvmnt - 1].y;
-            if (y > 0 && isGrounded)
+            if (y > 0.0099f && isGrounded)
             {
                 shadowRb2D.velocity = new Vector2(shadowRb2D.velocity.x, gameController.jumpIntensity);
+                Debug.Log(y);
             }
             shadowRb2D.velocity = new Vector2(x * gameController.playerSpeed, shadowRb2D.velocity.y);
 
@@ -146,20 +153,17 @@ public class ShadowPlayerController : MonoBehaviour
         }
         else
         {
-            replayingMovements = false;
-            itemsInList = false;
-            index_mvmnt = 1;
-        }
-
-    }
-
-    private void ResetShadow()
-    {
-        if (!replayingMovements && !itemsInList)
-        {
+            // Reset the shadow player and his place
+            shadowRb2D.velocity = new Vector2(0, 0);
             shadowRb2DT.position = new Vector2(-3, 1);
+
+            // Reset Game Logic
             movements.Clear();
             movement_times.Clear();
+            index_mvmnt = 1;
+            replayingMovements = false;
         }
+
     }
+
 }

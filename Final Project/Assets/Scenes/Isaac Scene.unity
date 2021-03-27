@@ -205,6 +205,59 @@ Transform:
   m_Father: {fileID: 944258018}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &131581792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 131581793}
+  - component: {fileID: 131581794}
+  m_Layer: 0
+  m_Name: wall_top
+  m_TagString: platform
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &131581793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131581792}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0019000173, y: 0.4008, z: -2.0788474}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1670989439}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &131581794
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131581792}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.08145958, y: -0.0011487827}
+  - {x: 0.07802749, y: -0.0011625066}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &132651637
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +487,7 @@ GameObject:
   - component: {fileID: 354773308}
   - component: {fileID: 354773307}
   m_Layer: 0
-  m_Name: climb1
+  m_Name: block
   m_TagString: climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670989439}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &404866683
 GameObject:
@@ -1308,6 +1361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 2
   jumpIntensity: 3
+  climbIntensity: 1.5
   playerBehavior: {fileID: 0}
   shadowPlayerController: {fileID: 0}
 --- !u!4 &1232298411
@@ -1868,7 +1922,7 @@ GameObject:
   - component: {fileID: 1388373662}
   - component: {fileID: 1388373664}
   m_Layer: 0
-  m_Name: block (1)
+  m_Name: block
   m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1886,7 +1940,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670989439}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1388373664
 SpriteRenderer:
@@ -2210,7 +2264,7 @@ GameObject:
   - component: {fileID: 1476582387}
   - component: {fileID: 1476582389}
   m_Layer: 0
-  m_Name: block (2)
+  m_Name: block
   m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2228,7 +2282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670989439}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1476582389
 SpriteRenderer:
@@ -2732,6 +2786,7 @@ Transform:
   m_LocalPosition: {x: 0.963, y: -0.296, z: -0.021584883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 131581793}
   - {fileID: 354773308}
   - {fileID: 1388373662}
   - {fileID: 1476582387}
@@ -2969,7 +3024,7 @@ GameObject:
   - component: {fileID: 1885185929}
   - component: {fileID: 1885185931}
   m_Layer: 0
-  m_Name: block (3)
+  m_Name: block
   m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2987,7 +3042,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670989439}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1885185931
 SpriteRenderer:
@@ -3272,7 +3327,7 @@ GameObject:
   - component: {fileID: 2010922461}
   - component: {fileID: 2010922463}
   m_Layer: 0
-  m_Name: block (4)
+  m_Name: block
   m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3290,7 +3345,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670989439}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2010922463
 SpriteRenderer:
@@ -3362,6 +3417,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 1232298410}
   playerBehavior: {fileID: 8859224790922566315}
+  recordingMovements: 0
+  replayingMovements: 0
 --- !u!1001 &8859224790922566314
 PrefabInstance:
   m_ObjectHideFlags: 0

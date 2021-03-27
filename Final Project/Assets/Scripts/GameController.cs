@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     // Player Stats
     [SerializeField] public int playerSpeed = 2;
     [SerializeField] public float jumpIntensity = 3;
+    [SerializeField] public float climbIntensity = 1.5f;
 
     // Controller Aspects
     [SerializeField] private PlayerBehavior playerBehavior;
