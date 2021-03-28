@@ -6,6 +6,7 @@ TagManager:
   tags:
   - platform
   - climbable
+  - shadowPlayer
   layers:
   - Default
   - TransparentFX
