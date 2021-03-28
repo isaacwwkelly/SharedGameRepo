@@ -155,7 +155,7 @@ public class ShadowPlayerController : MonoBehaviour
         {
             // Reset the shadow player and his place
             shadowRb2D.velocity = new Vector2(0, 0);
-            shadowRb2DT.position = new Vector2(-3, 1);
+            shadowRb2DT.position = gameController.returnVector;
 
             // Reset Game Logic
             movements.Clear();

@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerBehavior playerBehavior;
     [SerializeField] private ShadowPlayerController shadowPlayerController;
 
+    [SerializeField] public Vector2 returnVector = new Vector2(-5, 4);
+
 
     // Start is called before the first frame update
     void Start()

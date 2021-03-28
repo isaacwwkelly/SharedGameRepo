@@ -45,7 +45,7 @@ public class PlayerBehavior : MonoBehaviour
     private void Move()
     {
         float x = Input.GetAxisRaw("Horizontal");
-        float moveBy = x * gameController.playerSpeed;
+        float moveBy = x * gameController.playerSpeed; 
         rb2D.velocity = new Vector2(moveBy, rb2D.velocity.y);
     }
 
