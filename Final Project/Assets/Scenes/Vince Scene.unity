@@ -5811,7 +5811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260931706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4350002, y: 0.20099998, z: 0}
+  m_LocalPosition: {x: 1.4350002, y: -0.336, z: 0}
   m_LocalScale: {x: 1.4441, y: 1.4441, z: 1.4441}
   m_Children: []
   m_Father: {fileID: 1673820518}
@@ -9237,10 +9237,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9431c60f527c743befbd180eec3124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  jumpIntensity: 2
+  gameController: {fileID: 0}
+  shadowPlayerController: {fileID: 0}
+  rb2D: {fileID: 0}
+  rb2DT: {fileID: 0}
   isGrounded: 0
-  pastCharacter: {fileID: 0}
+  isClimbing: 0
 --- !u!212 &1771567159
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9435,6 +9437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1771567162}
   footStep: {fileID: 1771567161}
+  jump: {fileID: 8300000, guid: a81d5cc1f9e97d543971e65c90b81809, type: 3}
 --- !u!1 &1786095393
 GameObject:
   m_ObjectHideFlags: 0

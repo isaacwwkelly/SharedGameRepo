@@ -6,6 +6,7 @@ public class PlayerAudioAnimation : MonoBehaviour
 {
     public Animator anim;
     [SerializeField] private AudioSource footStep;
+    [SerializeField] private AudioClip jump;
 
     //NOTE: ADD SERIALIZE FIELD FOR MORE ANIMATIONS WHEN TIME
 
@@ -30,12 +31,20 @@ public class PlayerAudioAnimation : MonoBehaviour
         {
             anim.SetBool("running", false);
         }
+
+        if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
+        {
+            anim.SetTrigger("Jumping");
+        }
     }
 
     private void Footstep()
     {
         footStep.Play();
     }
-
+    private void Jumping()
+    {
+        
+    }
 
 }
