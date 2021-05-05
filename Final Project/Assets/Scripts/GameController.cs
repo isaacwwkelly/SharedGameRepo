@@ -68,20 +68,19 @@ public class GameController : MonoBehaviour
 
     IEnumerator checkForRequirementsMet()
     {
-        GameObject[] buttons = buttonsForDoor;
         while (puzzleRequirementMet == false)
         {
-            if (checkButtons(buttons))
+            if (checkButtons())
                 puzzleRequirementMet = true;
             yield return new WaitForSeconds(1f);
         }
     }
 
-    private bool checkButtons(GameObject[] buttons)
+    private bool checkButtons()
     {
         bool allArePressed = true;
 
-        foreach (GameObject button in buttons)
+        foreach (GameObject button in buttonsForDoor)
         {
             if (button.GetComponent<PressurePlatePress>().isPressed == false)
                 allArePressed = false;
