@@ -36,6 +36,12 @@ public class PlayerBehavior : MonoBehaviour
         // Player movement
         Move();
         Jump();
+        // Disable movement whenever the game is over
+        if (game_Manager.gameEnded)
+        {
+            this.enabled = false;
+            return;
+        }
     }
 
     private void FixedUpdate()

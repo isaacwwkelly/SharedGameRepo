@@ -47,6 +47,13 @@ public class PlayerAudioAnimation : MonoBehaviour
         {
             anim.SetTrigger("Jumping");
         }
+
+        // Disable movement whenever the game is over
+        if (game_Manager.gameEnded)
+        {
+            this.enabled = false;
+            return;
+        }
     }
 
     private void Footstep()
