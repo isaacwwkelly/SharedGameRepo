@@ -1592,7 +1592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
-  shadowPlayerController: {fileID: 0}
+  newShadowPlayer: {fileID: 0}
   rb2D: {fileID: 0}
   rb2DT: {fileID: 0}
   isGrounded: 0
