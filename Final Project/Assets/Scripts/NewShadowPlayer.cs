@@ -12,6 +12,9 @@ public class NewShadowPlayer : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Animator shadowAnimator;
 
+    [SerializeField] private Rigidbody2D selfRigidBody;
+    [SerializeField] private BoxCollider2D selfBoxCollider;
+
     private SpriteRenderer shadowSpriteRenderer;
 
     // Shadow Player Movement
@@ -125,6 +128,10 @@ public class NewShadowPlayer : MonoBehaviour
 
     IEnumerator ReplayPhases()
     {
+        //selfRigidBody.isKinematic = false;
+        //selfBoxCollider.enabled = true;
+        selfRigidBody.simulated = true;
+
         for (int i = 0; i < playerMovements.Count; i++)
         {
             yield return new WaitForSeconds(playerMvmntTimes[i]);
@@ -143,5 +150,32 @@ public class NewShadowPlayer : MonoBehaviour
         shadowAnimator.SetBool("running", false);
         yield return new WaitForSeconds(0);
 
+        //selfRigidBody.isKinematic = true;
+        //selfBoxCollider.enabled = false;
+        selfRigidBody.simulated = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("YEETUS");
+
+            BoxCollider2D myCollider = gameObject.GetComponent<BoxCollider2D>();
+
+            myCollider.enabled = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("BEETUS");
+
+            BoxCollider2D myCollider = gameObject.GetComponent<BoxCollider2D>();
+
+            myCollider.enabled = true;
+        }
     }
 }
