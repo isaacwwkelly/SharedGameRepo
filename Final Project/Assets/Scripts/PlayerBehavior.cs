@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -69,11 +70,9 @@ public class PlayerBehavior : MonoBehaviour
                 AudioSource s = jumpSound.GetComponent<AudioSource>();
                 s.Play();
                 rb2D.velocity = new Vector2(rb2D.velocity.x, gameController.jumpIntensity);
-
             }
             else if (isClimbing)
             {
-
                 rb2D.velocity = new Vector2(rb2D.velocity.x, Input.GetAxisRaw("Vertical") * gameController.climbIntensity);
             }
 
@@ -88,6 +87,13 @@ public class PlayerBehavior : MonoBehaviour
         {
             Physics2D.gravity = new Vector3(0, -2, 0);
             isClimbing = true;
+        }
+        else if (collision.gameObject.tag == "ending")
+        {
+            //vince
+            gameController.GetComponent<LifeCounter>().addLeveltoCount();
+            //load the next level
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

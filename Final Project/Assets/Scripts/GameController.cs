@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
         }
         if (fading)
         {
+
             Color objectColor = doorLock.GetComponent<SpriteRenderer>().color;
 
 
@@ -62,7 +63,11 @@ public class GameController : MonoBehaviour
             doorLock.GetComponent<SpriteRenderer>().color = objectColor;
 
             if (objectColor.a <= 0)
+            {
                 fading = false;
+                Destroy(doorLock);
+            }
+                
         }
     }
 
