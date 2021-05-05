@@ -23,7 +23,7 @@ public class LifeCounter : MonoBehaviour
         //ONLY CALL THIS SCRIPT WHEN THE PLAYER GETS HIT/DEAD
         //SceneManager.LoadScene(levelCount);
         
-    
+          
     
     }
 
@@ -52,6 +52,10 @@ public class LifeCounter : MonoBehaviour
     {
         levelCount += 1;
         PlayerPrefs.SetInt("levelCount", levelCount);
+        if(levelCount == 5)
+        {
+            SceneManager.LoadScene(6);
+        }
 
     }
 
