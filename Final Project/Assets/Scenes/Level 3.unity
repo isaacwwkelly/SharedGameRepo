@@ -9134,6 +9134,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 554127914831139522, guid: 39601e497554b3a42af5b2775dd03775, type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 721486485}
+    - target: {fileID: 554127914831139522, guid: 39601e497554b3a42af5b2775dd03775, type: 3}
+      propertyPath: doorLock
+      value: 
+      objectReference: {fileID: 2102868134}
+    - target: {fileID: 554127914831139522, guid: 39601e497554b3a42af5b2775dd03775, type: 3}
+      propertyPath: buttonsForDoor.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 554127914831139523, guid: 39601e497554b3a42af5b2775dd03775, type: 3}
       propertyPath: m_RootOrder
       value: 2
