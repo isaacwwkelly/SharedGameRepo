@@ -13,6 +13,7 @@ public class PlayerBehavior : MonoBehaviour
     public Transform rb2DT;
     [SerializeField] public bool isGrounded;
     [SerializeField] private bool isClimbing = false;
+    [SerializeField] public GameObject jumpSound;
 
 
     // Start is called before the first frame update
@@ -57,16 +58,24 @@ public class PlayerBehavior : MonoBehaviour
                 transform.parent = null;
 
             if (isGrounded || (isGrounded && isClimbing))
+            {
+                AudioSource s = jumpSound.GetComponent<AudioSource>();
+                s.Play();
                 rb2D.velocity = new Vector2(rb2D.velocity.x, gameController.jumpIntensity);
+
+            }
             else if (isClimbing)
+            {
+
                 rb2D.velocity = new Vector2(rb2D.velocity.x, Input.GetAxisRaw("Vertical") * gameController.climbIntensity);
+            }
 
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "platform")
+        if (collision.gameObject.tag == "platform" || collision.gameObject.tag == "button")
             isGrounded = true;
         else if (collision.gameObject.tag == "climbable")
         {
@@ -77,7 +86,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "platform")
+        if (collision.gameObject.tag == "platform" || collision.gameObject.tag == "button")
             isGrounded = false;
         else if (collision.gameObject.tag == "climbable")
         {

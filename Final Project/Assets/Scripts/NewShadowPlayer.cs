@@ -29,7 +29,7 @@ public class NewShadowPlayer : MonoBehaviour
     private bool recordingPhases = false;
     [SerializeField] private float phaseTime = 0.01f;
     private float startingTime;
-    [SerializeField] private Vector3 restingPosition;
+    private Vector3 restingPosition;
 
 
 
@@ -53,6 +53,8 @@ public class NewShadowPlayer : MonoBehaviour
             playerAnimator = player.GetComponent<Animator>();
         if (!shadowAnimator)
             shadowAnimator = GetComponent<Animator>();
+
+        restingPosition = gameController.returnVector;
 
     }
 
