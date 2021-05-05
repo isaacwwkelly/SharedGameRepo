@@ -8,7 +8,7 @@ public class PressurePlatePress : MonoBehaviour
     [SerializeField] public bool isPressed = false;
     [SerializeField] GameObject actualPlate;
     [SerializeField] public bool stickyButton;  //true if the buttons only need to be pressed once to stay down. False if buttons need to be held down to stay green
-
+    [SerializeField] public bool forInvisiblePlats;
     [SerializeField] public Color currentColor;
 
     public Color greenColor = new Color(74f, 200f, 63f, 255f);
@@ -35,6 +35,11 @@ public class PressurePlatePress : MonoBehaviour
             isPressed = true;
             // make plate green
             currentColor = greenColor;
+
+            if (forInvisiblePlats)
+            {
+                gameController.exposePlats();
+            }
         }
     }
 

@@ -108,4 +108,9 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(0);
     }
+
+    public void exposePlats()
+    {
+        GetComponent<InvisiblePlatforms>().makeVisible();
+    }
 }
