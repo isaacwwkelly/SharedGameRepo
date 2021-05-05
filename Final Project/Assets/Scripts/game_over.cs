@@ -18,7 +18,7 @@ public class game_over : MonoBehaviour
         PlayerPrefs.DeleteKey("lifeCount");
         PlayerPrefs.DeleteKey("levelCount");
         Debug.Log("Go to menu");
-        SceneManager.LoadScene("John_Menu_Screen");
+        SceneManager.LoadScene("Main Menu");
     }
 
     private void OnApplicationQuit()
