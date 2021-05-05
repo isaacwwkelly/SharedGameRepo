@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 554127914831139523}
   - component: {fileID: 554127914831139522}
   - component: {fileID: 7022828158719755402}
+  - component: {fileID: 6340104696891198834}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -51,6 +52,11 @@ MonoBehaviour:
   player: {fileID: 0}
   newShadowPlayer: {fileID: 0}
   returnVector: {x: -5, y: 4}
+  thisLvlHasButtons: 0
+  puzzleRequirementMet: 0
+  door: {fileID: 0}
+  doorLock: {fileID: 0}
+  buttonsForDoor: []
 --- !u!114 &7022828158719755402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,3 +70,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invisiblePlats: {fileID: 0}
+--- !u!114 &6340104696891198834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554127914831139521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b063eaf033f3e8e479a084ec89f367ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
