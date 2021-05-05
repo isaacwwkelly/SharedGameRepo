@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LifeCounter : MonoBehaviour
 {
+    [SerializeField] public GameObject gameOverPanel;
     public static int lifeCount = 3;
-    public static int levelCount = 0;
+    public static int levelCount = 1;
     // Start is called before the first frame update
     void Start()
     {
+        gameOverPanel = GameObject.Find("GameOver_UI");
         lifeCount = PlayerPrefs.GetInt("lifeCount", lifeCount);
         levelCount = PlayerPrefs.GetInt("levelCount", levelCount);
         
@@ -31,11 +33,18 @@ public class LifeCounter : MonoBehaviour
 
     public void isLifeTaken()
     {
-        //load sounds
-        lifeCount -= 1;
-        PlayerPrefs.SetInt("lifeCount", lifeCount);
-        //load scene
-        SceneManager.LoadScene(5);
+        if (lifeCount != 0)
+        {
+            //load sounds
+            lifeCount -= 1;
+            PlayerPrefs.SetInt("lifeCount", lifeCount);
+            //load scene
+            SceneManager.LoadScene(5);
+        }
+        if(lifeCount <= 0 )
+        {
+            gameOverPanel.SetActive(true);
+        }
     }
 
 
