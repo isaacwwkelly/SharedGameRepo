@@ -1113,7 +1113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1342689899920747742, guid: dd06667d170cc4c44a9cea46f0d61ce1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1342689901422807146, guid: dd06667d170cc4c44a9cea46f0d61ce1, type: 3}
       propertyPath: m_LocalScale.x
@@ -4020,7 +4020,7 @@ GameObject:
   - component: {fileID: 995190712}
   - component: {fileID: 995190711}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TimeTravelingCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6614,7 +6614,11 @@ MonoBehaviour:
   player: {fileID: 0}
   newShadowPlayer: {fileID: 0}
   returnVector: {x: -5, y: 4}
+  thisLvlHasButtons: 0
   puzzleRequirementMet: 0
+  door: {fileID: 0}
+  doorLock: {fileID: 0}
+  buttonsForDoor: []
 --- !u!4 &1660521089
 Transform:
   m_ObjectHideFlags: 0

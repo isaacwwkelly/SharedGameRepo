@@ -35,7 +35,7 @@ public class LifeCounter : MonoBehaviour
         lifeCount -= 1;
         PlayerPrefs.SetInt("lifeCount", lifeCount);
         //load scene
-        
+        SceneManager.LoadScene(5);
     }
 
 
@@ -44,6 +44,12 @@ public class LifeCounter : MonoBehaviour
         levelCount += 1;
         PlayerPrefs.SetInt("levelCount", levelCount);
 
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("lifeCount");
+        PlayerPrefs.DeleteKey("levelCount");
     }
 
 }
