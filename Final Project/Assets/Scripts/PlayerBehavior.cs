@@ -53,6 +53,9 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
+            if (transform.parent != null)
+                transform.parent = null;
+
             if (isGrounded || (isGrounded && isClimbing))
                 rb2D.velocity = new Vector2(rb2D.velocity.x, gameController.jumpIntensity);
             else if (isClimbing)
