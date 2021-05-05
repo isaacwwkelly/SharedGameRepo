@@ -17,9 +17,12 @@ public class Panels : MonoBehaviour
         deathPanel = GameObject.Find("Death Panel");
         winPanel = GameObject.Find("Win Panel");
 
-        nextLevelPanel.SetActive(false);
-        deathPanel.SetActive(false);
-        winPanel.SetActive(false);
+
+     
+            nextLevelPanel.SetActive(false);
+            deathPanel.SetActive(false);
+            winPanel.SetActive(false);
+        
     }
    
 
