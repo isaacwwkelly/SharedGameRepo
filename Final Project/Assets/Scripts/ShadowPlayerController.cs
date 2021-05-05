@@ -12,7 +12,7 @@ public class ShadowPlayerController : MonoBehaviour
     private Transform shadowRb2DT;
 
     // Shadow Player Movement
-    [SerializeField] private bool isClimbing = false;
+    //[SerializeField] private bool isClimbing = false;
     [SerializeField] private bool isGrounded = false;
 
 
@@ -95,7 +95,7 @@ public class ShadowPlayerController : MonoBehaviour
         else if (collision.gameObject.tag == "climbable")
         {
             Physics2D.gravity = new Vector3(0, -2, 0);
-            isClimbing = true;
+            //isClimbing = true;
         }
     }
 
@@ -106,7 +106,7 @@ public class ShadowPlayerController : MonoBehaviour
         else if (collision.gameObject.tag == "climbable")
         {
             Physics2D.gravity = new Vector3(0, -9.8f, 0);
-            isClimbing = false;
+            //isClimbing = false;
         }
     }
 

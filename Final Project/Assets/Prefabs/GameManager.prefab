@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 554127914831139523}
   - component: {fileID: 554127914831139522}
+  - component: {fileID: 7022828158719755402}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -46,6 +47,20 @@ MonoBehaviour:
   playerSpeed: 2
   jumpIntensity: 3
   climbIntensity: 1.5
-  playerBehavior: {fileID: 0}
-  shadowPlayerController: {fileID: 0}
+  timeTravelLimit: 0
+  player: {fileID: 0}
+  newShadowPlayer: {fileID: 0}
   returnVector: {x: -5, y: 4}
+--- !u!114 &7022828158719755402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554127914831139521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638da48092601b24f99469bb398a7c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invisiblePlats: {fileID: 0}
