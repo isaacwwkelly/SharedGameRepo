@@ -46,4 +46,10 @@ public class LifeCounter : MonoBehaviour
 
     }
 
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("lifeCount");
+        PlayerPrefs.DeleteKey("levelCount");
+    }
+
 }
