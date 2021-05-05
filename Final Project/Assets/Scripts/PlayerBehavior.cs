@@ -6,7 +6,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     // Game Objects
     [SerializeField] private GameController gameController;
-    [SerializeField] private ShadowPlayerController shadowPlayerController;
+    [SerializeField] private GameObject newShadowPlayer;
 
     // for player movement
     public Rigidbody2D rb2D;
@@ -24,8 +24,8 @@ public class PlayerBehavior : MonoBehaviour
         // Double check if the GameController.cs is not attached to the player in Unity
         if (!gameController)
             gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        if (!shadowPlayerController)
-            shadowPlayerController = GameObject.FindGameObjectWithTag("shadowPlayer").GetComponent<ShadowPlayerController>();
+        if (!newShadowPlayer)
+            newShadowPlayer = GameObject.FindGameObjectWithTag("shadowPlayer");
 
     }
 

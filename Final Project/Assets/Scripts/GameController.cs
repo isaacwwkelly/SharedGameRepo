@@ -10,8 +10,8 @@ public class GameController : MonoBehaviour
     [SerializeField] public float climbIntensity = 1.5f;
 
     // Controller Aspects
-    [SerializeField] private PlayerBehavior playerBehavior;
-    [SerializeField] private ShadowPlayerController shadowPlayerController;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject newShadowPlayer;
 
     [SerializeField] public Vector2 returnVector = new Vector2(-5, 4);
 
@@ -19,10 +19,10 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!playerBehavior)
-            playerBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>();
-        if (!shadowPlayerController)
-            shadowPlayerController = GameObject.FindGameObjectWithTag("shadowPlayer").GetComponent<ShadowPlayerController>();
+        if (!player)
+            player = GameObject.FindGameObjectWithTag("Player");
+        if (!newShadowPlayer)
+            newShadowPlayer = GameObject.FindGameObjectWithTag("shadowPlayer");
     }
 
     // Update is called once per frame

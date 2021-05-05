@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859224790859722240}
-  - component: {fileID: 8859224790859722243}
   - component: {fileID: 8859224790859722242}
+  - component: {fileID: 8859224790859722243}
   - component: {fileID: 8859224790859722253}
   - component: {fileID: 8859224790859722252}
   - component: {fileID: 8859224790859722255}
@@ -37,6 +37,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.095}
+--- !u!114 &8859224790859722242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8859224790859722248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9431c60f527c743befbd180eec3124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  newShadowPlayer: {fileID: 0}
+  rb2D: {fileID: 0}
+  rb2DT: {fileID: 0}
+  isGrounded: 0
+  isClimbing: 0
 --- !u!212 &8859224790859722243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,24 +106,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8859224790859722242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8859224790859722248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b9431c60f527c743befbd180eec3124, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
-  shadowPlayerController: {fileID: 0}
-  rb2D: {fileID: 0}
-  rb2DT: {fileID: 0}
-  isGrounded: 0
-  isClimbing: 0
 --- !u!61 &8859224790859722253
 BoxCollider2D:
   m_ObjectHideFlags: 0
