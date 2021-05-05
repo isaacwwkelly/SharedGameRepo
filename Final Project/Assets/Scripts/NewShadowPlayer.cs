@@ -15,6 +15,12 @@ public class NewShadowPlayer : MonoBehaviour
     [SerializeField] private Rigidbody2D selfRigidBody;
     [SerializeField] private BoxCollider2D selfBoxCollider;
 
+    //visuals for time travel panel
+    [SerializeField] public GameObject timeTravelPanel;
+    [SerializeField] public GameObject mainCamera;
+   
+
+
     private SpriteRenderer shadowSpriteRenderer;
 
     // Shadow Player Movement
@@ -39,6 +45,7 @@ public class NewShadowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
 
         // Double check if the GameController.cs is not attached to the player in Unity
         if (!gameController)
@@ -130,6 +137,16 @@ public class NewShadowPlayer : MonoBehaviour
     {
         //selfRigidBody.isKinematic = false;
         //selfBoxCollider.enabled = true;
+        //set panel true
+        timeTravelPanel.SetActive(true);
+        //pause bgm
+
+        //play sound
+        AudioSource s = timeTravelPanel.GetComponent<AudioSource>();
+        AudioSource bgm = mainCamera.GetComponent<AudioSource>();
+        bgm.Pause();
+        s.Play();
+
         selfRigidBody.simulated = true;
 
         for (int i = 0; i < playerMovements.Count; i++)
@@ -153,6 +170,12 @@ public class NewShadowPlayer : MonoBehaviour
         //selfRigidBody.isKinematic = true;
         //selfBoxCollider.enabled = false;
         selfRigidBody.simulated = false;
+
+        //disable panel
+        timeTravelPanel.SetActive(false);
+        //sound pause
+        // bgm play
+        bgm.Play();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -171,7 +194,7 @@ public class NewShadowPlayer : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("BEETUS");
+            Debug.Log("SKEETUS DELETUS");
 
             BoxCollider2D myCollider = gameObject.GetComponent<BoxCollider2D>();
 
