@@ -10,6 +10,8 @@ TagManager:
   - endOfPlat
   - leftSidePlat
   - rightSidePlat
+  - death
+  - button
   layers:
   - Default
   - TransparentFX
