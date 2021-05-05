@@ -1196,6 +1196,7 @@ MonoBehaviour:
   climbIntensity: 1.5
   playerBehavior: {fileID: 0}
   shadowPlayerController: {fileID: 0}
+  returnVector: {x: -5, y: 4}
 --- !u!4 &1232298411
 Transform:
   m_ObjectHideFlags: 0
@@ -1988,6 +1989,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.095
       objectReference: {fileID: 0}
+    - target: {fileID: 8859224790859722243, guid: 14389658958280e439ac0cb9fcc9894f, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8859224790859722248, guid: 14389658958280e439ac0cb9fcc9894f, type: 3}
       propertyPath: m_Name
       value: shadow player
@@ -2000,8 +2005,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: shadowPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 8859224790859722254, guid: 14389658958280e439ac0cb9fcc9894f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8859224790859722242, guid: 14389658958280e439ac0cb9fcc9894f, type: 3}
+    - {fileID: 8859224790859722252, guid: 14389658958280e439ac0cb9fcc9894f, type: 3}
+    - {fileID: 8859224790859722253, guid: 14389658958280e439ac0cb9fcc9894f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 14389658958280e439ac0cb9fcc9894f, type: 3}
 --- !u!1 &1476582386
 GameObject:
@@ -3078,17 +3089,44 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033611138}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c74ead04c153dbf47a8d23de22103025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 1232298410}
+  player: {fileID: 2145632235}
   playerBehavior: {fileID: 8859224790922566315}
   isClimbing: 0
   isGrounded: 0
   recordingMovements: 0
   replayingMovements: 0
+--- !u!114 &2033611140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033611138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677bbc945b7e7834895643aacae05788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  player: {fileID: 0}
+  playerBehavior: {fileID: 0}
+  playerSpriteRenderer: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  recordingMovements: 0
+  replayingMovements: 0
+  phaseTime: 0.001
+  restingPosition: {x: -3, y: 1, z: 0}
+--- !u!1 &2145632235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8859224790859722248, guid: 14389658958280e439ac0cb9fcc9894f, type: 3}
+  m_PrefabInstance: {fileID: 8859224790922566314}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8859224790922566314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3171,7 +3209,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8859224790859722242, guid: 14389658958280e439ac0cb9fcc9894f, type: 3}
   m_PrefabInstance: {fileID: 8859224790922566314}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2145632235}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b9431c60f527c743befbd180eec3124, type: 3}

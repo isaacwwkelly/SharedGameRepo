@@ -6,6 +6,7 @@ public class ShadowPlayerController : MonoBehaviour
 {
     // Game Objects
     [SerializeField] private GameController gameController;
+    [SerializeField] private GameObject player;
     [SerializeField] private PlayerBehavior playerBehavior;
     private Rigidbody2D shadowRb2D;
     private Transform shadowRb2DT;
@@ -34,8 +35,10 @@ public class ShadowPlayerController : MonoBehaviour
         // Double check if the GameController.cs is not attached to the player in Unity
         if (!gameController)
             gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        if (!player)
+            player = GameObject.FindGameObjectWithTag("Player");
         if (!playerBehavior)
-            playerBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>();
+            playerBehavior = player.GetComponent<PlayerBehavior>();
 
     }
 
@@ -46,8 +49,7 @@ public class ShadowPlayerController : MonoBehaviour
         // Time Travel Controller logic right here
         if (Input.GetKeyDown(KeyCode.Return))
         {
-
-            if (startOrStopTimeTravel) // if it's the first time pressing the time travel button, which will trigger the recording FOR the shadow
+            if (startOrStopTimeTravel) // if it's the first time pressing the time travel button, this will trigger the recording FOR the shadow
             {
 
                 BeginTimeTravel();
