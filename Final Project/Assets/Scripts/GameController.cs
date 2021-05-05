@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public int playerSpeed = 2;
     [SerializeField] public float jumpIntensity = 3;
     [SerializeField] public float climbIntensity = 1.5f;
+    [SerializeField] public float timeTravelLimit;
 
     // Controller Aspects
     [SerializeField] private GameObject player;
@@ -19,6 +20,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeTravelLimit = PlayerPrefs.GetFloat("returnVector", 10f);
+
+
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player");
         if (!newShadowPlayer)
@@ -28,6 +32,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
 }

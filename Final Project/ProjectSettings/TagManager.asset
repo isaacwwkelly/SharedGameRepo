@@ -12,6 +12,7 @@ TagManager:
   - rightSidePlat
   - death
   - ending
+  - button
   layers:
   - Default
   - TransparentFX
