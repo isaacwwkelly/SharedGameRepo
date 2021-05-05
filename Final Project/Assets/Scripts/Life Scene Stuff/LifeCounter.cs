@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class LifeCounter : MonoBehaviour
 {
     [SerializeField] public GameObject gameOverPanel;
-    public static int lifeCount = 3;
-    public static int levelCount = 1;
+    public int lifeCount = 3;
+    public int levelCount = 1;
     // Start is called before the first frame update
     void Start()
     {

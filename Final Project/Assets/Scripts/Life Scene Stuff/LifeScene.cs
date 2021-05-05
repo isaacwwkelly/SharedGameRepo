@@ -8,6 +8,14 @@ public class LifeScene : MonoBehaviour
 {
 
     [SerializeField] public Text lifeText;
+    [SerializeField] private GameObject gameController;
+
+
+    private void Awake()
+    {
+        if (!gameController)
+            gameController = GameObject.FindGameObjectWithTag("GameController");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +26,13 @@ public class LifeScene : MonoBehaviour
 
     private void Update()
     {
-        lifeText.text = " x " + LifeCounter.lifeCount;
+        lifeText.text = " x " + gameController.GetComponent<LifeCounter>().lifeCount;
     }
 
     IEnumerator lifeScene()
     {
         yield return new WaitForSeconds(3.5f);
-        SceneManager.LoadScene(LifeCounter.levelCount);
+        SceneManager.LoadScene(gameController.GetComponent<LifeCounter>().levelCount);
         
     }
 }
