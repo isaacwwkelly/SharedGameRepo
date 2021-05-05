@@ -96,6 +96,10 @@ public class PlayerBehavior : MonoBehaviour
             // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             SceneManager.LoadScene(5);
         }
+        else if (collision.gameObject.tag == "death")
+        {
+            gameController.GetComponent<LifeCounter>().isLifeTaken();
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
