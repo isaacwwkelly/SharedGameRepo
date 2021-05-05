@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 99130508}
   - component: {fileID: 99130507}
   - component: {fileID: 99130506}
+  - component: {fileID: 99130510}
   m_Layer: 0
   m_Name: movingPlat2
   m_TagString: platform
@@ -386,6 +387,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &99130510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99130505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af001bb825ef78e4990f4bcddcfa0e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &136497817
 GameObject:
   m_ObjectHideFlags: 0
@@ -5244,6 +5257,7 @@ GameObject:
   - component: {fileID: 976796346}
   - component: {fileID: 976796345}
   - component: {fileID: 976796348}
+  - component: {fileID: 976796349}
   m_Layer: 0
   m_Name: movingPlat1
   m_TagString: platform
@@ -5356,6 +5370,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0115469, y: 0.9867022}
   m_EdgeRadius: 0
+--- !u!114 &976796349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976796344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af001bb825ef78e4990f4bcddcfa0e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &978780607
 GameObject:
   m_ObjectHideFlags: 0
@@ -6861,6 +6887,10 @@ PrefabInstance:
     - target: {fileID: 2337535612639655786, guid: 5f1d7f3dffc4cc44b9395dd0f96d769b, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337535612639655787, guid: 5f1d7f3dffc4cc44b9395dd0f96d769b, type: 3}
+      propertyPath: stickyButton
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f1d7f3dffc4cc44b9395dd0f96d769b, type: 3}
@@ -11308,7 +11338,7 @@ GameObject:
   - component: {fileID: 1959974250}
   m_Layer: 0
   m_Name: door (1)
-  m_TagString: Untagged
+  m_TagString: ending
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
             doorOpened = true;
             fading = true;
             //StartCoroutine(FadeOut(doorLock));
-            door.GetComponent<BoxCollider2D>().enabled = false;
+            door.GetComponent<BoxCollider2D>().enabled = true;
             Debug.Log("DOOR UNLOCKED");
         }
 
