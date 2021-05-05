@@ -94,11 +94,11 @@ public class NewShadowPlayer : MonoBehaviour
 
                 //Debug.Log("movements3 count: " + movements3.Count + "  \tmovement_times2 count: " + movement_times2.Count);
                 //Debug.Log("PRINTING:\n\t    movements3[0]: " + movements3[0]+ "  \tmovement_times2[0]: " + movement_times2[0]);
-                for (int i = 0; i < playerMovements.Count; i++)
-                {
-                    //Debug.Log("movements3[" + i + "]: " + playerMovements[i] + "  \tmovement_times2[" + i + "]: " + playerMovements[i]);
-                    //Debug.Log(playerRunning[i]);
-                }
+                //for (int i = 0; i < playerMovements.Count; i++)
+                //{
+                //    Debug.Log("movements3[" + i + "]: " + playerMovements[i] + "  \tmovement_times2[" + i + "]: " + playerMovements[i]);
+                //    Debug.Log(playerRunning[i]);
+                //}
 
                 StartCoroutine(ReplayPhases());
 
@@ -109,7 +109,6 @@ public class NewShadowPlayer : MonoBehaviour
 
     IEnumerator RecordPhases()
     {
-        // movement_times2.Add(Time.time - startingTime);
         while (recordingPhases)
         {
             playerMvmntTimes.Add(phaseTime);
@@ -131,8 +130,6 @@ public class NewShadowPlayer : MonoBehaviour
             shadowAnimator.SetBool("running", playerRunning[i]);
             transform.position = playerMovements[i];
             transform.rotation = playerRotations[i];
-            
-            
         }
 
         playerMovements.Clear();
@@ -141,7 +138,7 @@ public class NewShadowPlayer : MonoBehaviour
         playerRunning.Clear();
 
         transform.position = restingPosition;
-
+        shadowAnimator.SetBool("running", false);
         yield return new WaitForSeconds(0);
 
     }
