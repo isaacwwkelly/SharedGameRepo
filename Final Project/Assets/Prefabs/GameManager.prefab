@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 554127914831139522}
   - component: {fileID: 7022828158719755402}
   - component: {fileID: 6340104696891198834}
+  - component: {fileID: 7153212605253016147}
+  - component: {fileID: 1961755415886961862}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -82,3 +84,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b063eaf033f3e8e479a084ec89f367ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 0}
+--- !u!114 &7153212605253016147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554127914831139521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7535577040d04541b3f9e678d25f60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 0}
+--- !u!114 &1961755415886961862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554127914831139521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f7a3d907437a747be45c54b5984f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 0}
