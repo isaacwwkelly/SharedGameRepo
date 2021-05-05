@@ -31,6 +31,7 @@ public class LifeCounter : MonoBehaviour
 
     public void isLifeTaken()
     {
+
         lifeCount -= 1;
         PlayerPrefs.SetInt("lifeCount", lifeCount);
         //load scene
