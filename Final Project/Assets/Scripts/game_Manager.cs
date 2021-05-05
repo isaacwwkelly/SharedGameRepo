@@ -37,6 +37,14 @@ public class game_Manager : MonoBehaviour
     {
         gameEnded = true;
         Debug.Log("GAME OVER");
+        // disable player movement script here, add this if statement wherever the movement happens
+        /*
+         * if(game_Manager.gameEnded)
+           {
+                this.enabled = false;   
+                return;
+           }
+         */
 
         gameOverUI.SetActive(true);
 

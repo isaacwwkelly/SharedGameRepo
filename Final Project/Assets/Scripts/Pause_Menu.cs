@@ -37,6 +37,10 @@ public class Pause_Menu : MonoBehaviour
 
     public void Menu()
     {
+        if(Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
         SceneManager.LoadScene("John_Menu_Screen");
     }
 }
