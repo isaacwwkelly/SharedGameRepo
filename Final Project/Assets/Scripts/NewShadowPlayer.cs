@@ -10,6 +10,7 @@ public class NewShadowPlayer : MonoBehaviour
     [SerializeField] private PlayerBehavior playerBehavior;
     [SerializeField] private SpriteRenderer playerSpriteRenderer;
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private Animator shadowAnimator;
 
     private SpriteRenderer shadowSpriteRenderer;
 
@@ -49,7 +50,9 @@ public class NewShadowPlayer : MonoBehaviour
         shadowSpriteRenderer = GetComponent<SpriteRenderer>();
 
         if (!playerAnimator)
-            playerAnimator = GetComponent<Animator>();
+            playerAnimator = player.GetComponent<Animator>();
+        if (!shadowAnimator)
+            shadowAnimator = GetComponent<Animator>();
 
     }
 
@@ -125,7 +128,7 @@ public class NewShadowPlayer : MonoBehaviour
         {
             yield return new WaitForSeconds(playerMvmntTimes[i]);
             //shadowSpriteRenderer.sprite = playerSprites[i];
-            playerAnimator.SetBool("running", playerRunning[i]);
+            shadowAnimator.SetBool("running", playerRunning[i]);
             transform.position = playerMovements[i];
             transform.rotation = playerRotations[i];
             
