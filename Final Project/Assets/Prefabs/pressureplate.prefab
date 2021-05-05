@@ -233,8 +233,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad21476906479d44b83e3dc4a9e71520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   isPressed: 0
   actualPlate: {fileID: 2337535612639655783}
+  stickyButton: 0
   currentColor: {r: 0.24705882, g: 0.7254902, b: 0.78431374, a: 0}
   greenColor: {r: 0.2901961, g: 0.78431374, b: 0.24705882, a: 255}
   redColor: {r: 0.78431374, g: 0.2901961, b: 0.24705882, a: 255}

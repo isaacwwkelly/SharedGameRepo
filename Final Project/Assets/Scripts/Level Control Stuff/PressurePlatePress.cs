@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PressurePlatePress : MonoBehaviour
 {
+    [SerializeField] private GameController gameController;
     [SerializeField] public bool isPressed = false;
     [SerializeField] GameObject actualPlate;
+    [SerializeField] public bool stickyButton;  //true if the buttons only need to be pressed once to stay down. False if buttons need to be held down to stay green
 
     [SerializeField] public Color currentColor;
 
@@ -14,6 +16,9 @@ public class PressurePlatePress : MonoBehaviour
 
     private void Start()
     {
+        if (!gameController)
+            gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+
         startColor();
     }
 
@@ -26,24 +31,19 @@ public class PressurePlatePress : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "shadowPlayer")
         {
-            Debug.Log("Pressed!");
 
             isPressed = true;
-
             // make plate green
             currentColor = greenColor;
-
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "shadowPlayer")
+        if (!stickyButton && (collision.gameObject.tag == "Player" || collision.gameObject.tag == "shadowPlayer"))
         {
-            Debug.Log("NOT Pressed!");
 
             isPressed = false;
-
             // make plate green
             currentColor = redColor;
         }

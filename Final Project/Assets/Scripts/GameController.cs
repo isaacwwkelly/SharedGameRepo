@@ -17,7 +17,13 @@ public class GameController : MonoBehaviour
     [SerializeField] public Vector2 returnVector = new Vector2(-5, 4);
 
     // Puzzle 
+    public bool thisLvlHasButtons;
     public bool puzzleRequirementMet = false;
+    private bool doorOpened = false;
+    [SerializeField] public GameObject door;
+    [SerializeField] private GameObject doorLock;
+    private bool fading = false;
+    [SerializeField] GameObject[] buttonsForDoor;
 
 
     // Start is called before the first frame update
@@ -25,17 +31,77 @@ public class GameController : MonoBehaviour
     {
         timeTravelLimit = PlayerPrefs.GetFloat("returnVector", 10f);
 
-
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player");
         if (!newShadowPlayer)
             newShadowPlayer = GameObject.FindGameObjectWithTag("shadowPlayer");
+
+        if (thisLvlHasButtons)
+            StartCoroutine(checkForRequirementsMet());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (puzzleRequirementMet && !doorOpened)
+        {
+            doorOpened = true;
+            fading = true;
+            //StartCoroutine(FadeOut(doorLock));
 
+            Debug.Log("DOOR UNLOCKED");
+        }
+        if (fading)
+        {
+            Color objectColor = doorLock.GetComponent<SpriteRenderer>().color;
+
+
+            float fadeAmount = objectColor.a - (1f * Time.deltaTime);
+            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+
+            doorLock.GetComponent<SpriteRenderer>().color = objectColor;
+
+            if (objectColor.a <= 0)
+                fading = false;
+        }
     }
 
+    IEnumerator checkForRequirementsMet()
+    {
+        GameObject[] buttons = buttonsForDoor;
+        while (puzzleRequirementMet == false)
+        {
+            if (checkButtons(buttons))
+                puzzleRequirementMet = true;
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private bool checkButtons(GameObject[] buttons)
+    {
+        bool allArePressed = true;
+
+        foreach (GameObject button in buttons)
+        {
+            if (button.GetComponent<PressurePlatePress>().isPressed == false)
+                allArePressed = false;
+        }
+
+        return allArePressed;
+    }
+
+    IEnumerator FadeOut(GameObject ObjectToFade)
+    {
+        Color objectColor = ObjectToFade.GetComponent<SpriteRenderer>().color;
+
+        while (objectColor.a > 0)
+        {
+            float fadeAmount = objectColor.a - (0.005f * Time.deltaTime);
+            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+
+            ObjectToFade.GetComponent<SpriteRenderer>().color = objectColor;
+        }
+
+        yield return new WaitForSeconds(0);
+    }
 }
