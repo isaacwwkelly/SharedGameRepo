@@ -16,6 +16,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] public Vector2 returnVector = new Vector2(-5, 4);
 
+    // Puzzle 
+    public bool puzzleRequirementMet = false;
+
 
     // Start is called before the first frame update
     void Start()
