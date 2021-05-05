@@ -37,7 +37,10 @@ public class GameController : MonoBehaviour
             newShadowPlayer = GameObject.FindGameObjectWithTag("shadowPlayer");
 
         if (thisLvlHasButtons)
+        {
             StartCoroutine(checkForRequirementsMet());
+            door.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -48,9 +51,10 @@ public class GameController : MonoBehaviour
             doorOpened = true;
             fading = true;
             //StartCoroutine(FadeOut(doorLock));
-
+            door.GetComponent<BoxCollider2D>().enabled = false;
             Debug.Log("DOOR UNLOCKED");
         }
+
         if (fading)
         {
 
