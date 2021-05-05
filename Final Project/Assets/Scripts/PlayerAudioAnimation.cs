@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAudioAnimation : MonoBehaviour
 {
+    private bool isLeft = false;
     public Animator anim;
     [SerializeField] private AudioSource footStep;
     [SerializeField] private AudioClip jump;
@@ -22,10 +23,20 @@ public class PlayerAudioAnimation : MonoBehaviour
         if(Input.GetKey(KeyCode.A))
         {
             anim.SetBool("running", true);
+            if (isLeft == false)
+            {
+                anim.transform.Rotate(0, 180, 0);
+                isLeft = true;
+            }
         }
         else if (Input.GetKey(KeyCode.D))
         {
             anim.SetBool("running", true);
+            if(isLeft == true)
+            {
+                anim.transform.Rotate(0, 180, 0);
+                isLeft = false;
+            }
         }
         else
         {
