@@ -94,7 +94,10 @@ public class PlayerBehavior : MonoBehaviour
             gameController.GetComponent<LifeCounter>().addLeveltoCount();
             //load the next level
             // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            SceneManager.LoadScene(5);
+            if (gameController.GetComponent<LifeCounter>().levelCount < 5)
+                SceneManager.LoadScene(5);
+            else
+                SceneManager.LoadScene("winning");
         }
         else if (collision.gameObject.tag == "death")
         {
